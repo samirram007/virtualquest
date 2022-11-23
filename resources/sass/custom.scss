@@ -1,0 +1,53 @@
+$randomNumber: random(5);
+.bg-vq {
+    // background:linear-gradient(45deg, #d8cfc5 0%,#f8efe5 100%);
+
+     background: linear-gradient(343deg, #19245a 0%, #a3afaf 100%);
+
+        // background: linear-gradient(343deg, #5174d7 0%, #119f9f 100%);
+        // animation: bg-animate 10s linear infinite;
+    .card {
+
+            background: linear-gradient(45deg,#a666e1 0%,#ede2d6 100%);
+
+        .card-header {
+            background: linear-gradient(45deg,#e6b4c900 0%,#f1dbc000 100%);
+        }
+    }
+}
+@keyframes bg-animate{
+0%{
+    background: linear-gradient(270deg, #5174d7 0%, #119f9f 100%);
+}
+
+100%{
+    background: linear-gradient(270deg, #5174d7 0%, #119f9f 100%);
+}
+
+}
+#app {
+    height: 100vh;
+}
+.navbar-custom {
+    background: linear-gradient(to bottom, #9a2ea8 0%, #101d96 100%);
+    color: #fff;
+    margin: 10px;
+    height: 100px;
+}
+.sidebar-custom {
+    background: linear-gradient(to bottom, #9229a0 0%, #101d96 100%);
+    color: #fff;
+    margin: 10px;
+}
+.navbar-brand {
+    color: #fff;
+    &:hover {
+        color: #fff;
+    }
+}
+.brand-logo {
+    text-align: center;
+    img {
+        width: 200px;
+    }
+}
