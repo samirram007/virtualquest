@@ -61,7 +61,7 @@ class MpsInvestmentController extends Controller
 
         if ($user) {
             $investment = MpsInvestment::with('user')->where('user_id', $user->id)->orderby('created_at', 'desc')->get();
-//  dd($investment->count());
+    //  dd($investment->count());
             $view = view('mps.investment_index', compact('user', 'investment'))->render();
             //dd($view);
             return response()->json(['status' => 'success', 'data' => $user, 'view' => $view]);

@@ -238,7 +238,7 @@ class InvestmentController extends Controller
 
         });
 
-        return Redirect()->back();
+       // return Redirect()->back();
     }
 
     protected function pps_distribution_log()
@@ -270,17 +270,20 @@ class InvestmentController extends Controller
                     if ($ex_data) {
                         $data = $ex_data;
                     }
-                    $data->investment_id = $inv->id;
-                    $data->log_date = date('Y-m-d', strtotime($inv->investment_date . ' + ' . $i . ' days'));
+                    else{
+                        $data->investment_id = $inv->id;
+                        $data->log_date = date('Y-m-d', strtotime($inv->investment_date . ' + ' . $i . ' days'));
 
-                    $data->user_id = $inv->user_id;
-                    $data->amount = $inv->amount;
-                    $data->percentage = $pos;
-                    $data->day_count = $i;
-                    $inv_commission = ($inv->amount * ($pos) / 100);
-                    $data->commission = $inv_commission;
-                    $data->cumulative_commission = $inv_commission * $i;
-                    $data->save();
+                        $data->user_id = $inv->user_id;
+                        $data->amount = $inv->amount;
+                        $data->percentage = $pos;
+                        $data->day_count = $i;
+                        $inv_commission = ($inv->amount * ($pos) / 100);
+                        $data->commission = $inv_commission;
+                        $data->cumulative_commission = $inv_commission * $i;
+                        $data->save();
+                    }
+
                     // dd($data);
 
                     $parent_id = User::where('id', $inv->user_id)->first()->parent_id;
@@ -292,6 +295,7 @@ class InvestmentController extends Controller
                         if ($ex_leveldata) {
                             $pps_level = $ex_leveldata;
                         }
+                        else{
                         $pps_level->investment_id = $inv->id;
                         $pps_level->user_id = $inv->user_id; //investor_id
                         $pps_level->parent_id = $parent_id;
@@ -303,6 +307,8 @@ class InvestmentController extends Controller
                         $pps_level->commission = ($inv_commission * ($level_commission->commission) / 100);
                         $pps_level->cumulative_commission = ($inv_commission * ($level_commission->commission) / 100) * $i;
                         $pps_level->save();
+                        }
+
                         $parent_id = User::where('id', $parent_id)->first()->parent_id;
                         $cnt_distribution++;
                     }
@@ -312,7 +318,7 @@ class InvestmentController extends Controller
 
     //   });
     //     DB::commit();
-        return Redirect()->back();
+       // return Redirect()->back();
     }
     protected function pps_distribution_acknowledge(Request $request)
     {

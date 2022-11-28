@@ -11,7 +11,7 @@ if (str_contains($prefix, 'admin')) {
 
 @endphp
 <nav class="navbar navbar-expand-lg navbar-dark bg-transparent justify-content-between">
-<div class="title text-light">MPS</div>
+<div class="title text-light">MPS24</div>
     <div class="btn-group">
         <button type="button" class="btn btn-outline-info"><a class="text-light" href="{{ route('admin.mps') }}">New <span class="sr-only">(current)</span></a></button>
         <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

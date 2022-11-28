@@ -35,10 +35,34 @@
                     <span class="menu-title">PPS </span>
                 </a>
             </li>
+            <li class="nav-item {{ $route == 'ppsx.index' ? 'active' : '' }} ">
+                <a class="nav-link" href="{{ route('ppsx.index') }}">
+                    <i class="icon-grid menu-icon"></i>
+                    <span class="menu-title">PPS NEXT </span>
+                </a>
+            </li>
             <li class="nav-item {{ $route == 'mpx.index' ? 'active' : '' }} ">
                 <a class="nav-link" href="{{ route('mps.index') }}">
                     <i class="icon-grid menu-icon"></i>
-                    <span class="menu-title">MPS </span>
+                    <span class="menu-title">MPS24 </span>
+                </a>
+            </li>
+            <li class="nav-item {{ $route == 'mpx36.index' ? 'active' : '' }} ">
+                <a class="nav-link" href="{{ route('mps36.index') }}">
+                    <i class="icon-grid menu-icon"></i>
+                    <span class="menu-title">MPS36 </span>
+                </a>
+            </li>
+            <li class="nav-item {{ $route == 'mpx48.index' ? 'active' : '' }} ">
+                <a class="nav-link" href="{{ route('mps48.index') }}">
+                    <i class="icon-grid menu-icon"></i>
+                    <span class="menu-title">MPS48 </span>
+                </a>
+            </li>
+            <li class="nav-item {{ $route == 'mpx60.index' ? 'active' : '' }} ">
+                <a class="nav-link" href="{{ route('mps60.index') }}">
+                    <i class="icon-grid menu-icon"></i>
+                    <span class="menu-title">MPS60 </span>
                 </a>
             </li>
         </ul>

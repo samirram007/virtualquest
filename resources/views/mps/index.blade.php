@@ -147,7 +147,7 @@
 
                 var user_code = $('#user_code').val();
                 $.ajax({
-                    url: "{{ route('investment.user_validate') }}",
+                    url: "{{ route('mps.user_validate') }}",
                     type: "POST",
                     data: {
                         _token: "{{ csrf_token() }}",

@@ -11,9 +11,12 @@ if (str_contains($prefix, 'admin')) {
 
 @endphp
 <nav class="navbar navbar-expand-lg navbar-dark bg-transparent justify-content-between">
-<div class="title text-light">Investment</div>
+<div class="title text-light">PPS</div>
     <div class="btn-group">
-        <button type="button" class="btn btn-outline-info"><a class="text-light" href="{{ route('admin.investment') }}">New <span class="sr-only">(current)</span></a></button>
+        <button type="button" class="btn btn-outline-info ">
+            <a class="text-light" href="javascript:;" onclick="swalMsg('This proposition has been discontinued');">New <span class="sr-only">(current)</span></a>
+            {{-- <a class="text-light" href="{{ route('admin.investment') }}">New <span class="sr-only">(current)</span></a> --}}
+        </button>
         <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="sr-only">Toggle Dropdown</span>
         </button>
@@ -50,5 +53,15 @@ if (str_contains($prefix, 'admin')) {
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form> --}}
     </div>
+    <script>
+        function swalMsg(msg) {
+            Swal.fire({
+                title: "Sorry!",
+                text: msg,
+                icon: "warning",
+                button: "OK",
+            });
+        }
+    </script>
   </nav>
 

@@ -39,7 +39,7 @@
                             <tr>
                                 <th>Code</th>
                                 <th>Name</th>
-                                <th>Sponsor</th>
+                                {{-- <th>Sponsor</th> --}}
                                 <th>Level</th>
                                 <th>Self Inv</th>
                                 <th>Team Inv</th>
@@ -49,7 +49,7 @@
                                     <tr>
                                         <td>{{ $data->code }}</td>
                                         <td>{{ $data->name }}</td>
-                                        <td>{{ !empty($data['parent']) ? $data['parent']['code'] : '' }}</td>
+                                        {{-- <td>{{ !empty($data['parent']) ? $data['parent']['code'] : '' }}</td> --}}
                                         <td>{{ $data->level }}</td>
                                         <td>{{ $data->self != 0 ? '$' . $data->self : '' }}</td>
                                         <td>{{ $data->team != 0 ? '$' . $data->team : '' }}</td>
