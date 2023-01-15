@@ -54,19 +54,62 @@
             <span class="menu-title">MPS60 </span>
         </a>
     </li>
+    <li class="nav-item">
 
-    <li class="nav-item {{ $route == 'admin.pps_distribution' ? 'active' : '' }} ">
-        <a class="nav-link" href="{{ route('admin.pps_distribution') }}">
-            <i class="icon-grid menu-icon"></i>
-            <span class="menu-title">Generate Payout </span>
-        </a>
+        <ul class="nav ">
+
+            <div>Generation </div>
+            <li class="nav-item {{ $route == 'admin.pps_distribution' ? 'active' : '' }} ">
+                <a class="nav-link" href="{{ route('admin.pps_distribution') }}">
+                    <i class="icon-grid menu-icon"></i>
+                    <span class="menu-title">Generate Payout </span>
+                </a>
+            </li>
+            <li class="nav-item {{ $route == 'admin.pps_distribution_log' ? 'active' : '' }} ">
+                <a class="nav-link" href="{{ route('admin.pps_distribution_log') }}">
+                    <i class="icon-grid menu-icon"></i>
+                    <span class="menu-title">Generate 100 Payout Log</span>
+                </a>
+            </li>
+            <li class="nav-item {{ $route == 'admin.ppsx_distribution' ? 'active' : '' }} ">
+                <a class="nav-link" href="{{ route('admin.ppsx_distribution') }}">
+                    <i class="icon-grid menu-icon"></i>
+                    <span class="menu-title">Generate Payout PPSX </span>
+                </a>
+            </li>
+            <li class="nav-item {{ $route == 'admin.ppsx_distribution_log' ? 'active' : '' }} ">
+                <a class="nav-link" href="{{ route('admin.ppsx_distribution_log') }}">
+                    <i class="icon-grid menu-icon"></i>
+                    <span class="menu-title">Generate Payout PPSX Log</span>
+                </a>
+            </li>
+            {{-- <li class="nav-item {{ $route == 'admin.pps_distribution_log' ? 'active' : '' }} ">
+                <a class="nav-link" href="{{ route('admin.pps_distribution_log',200) }}">
+                    <i class="icon-grid menu-icon"></i>
+                    <span class="menu-title">Generate 200 Payout Log</span>
+                </a>
+            </li>
+            <li class="nav-item {{ $route == 'admin.pps_distribution_log' ? 'active' : '' }} ">
+                <a class="nav-link" href="{{ route('admin.pps_distribution_log',300) }}">
+                    <i class="icon-grid menu-icon"></i>
+                    <span class="menu-title">Generate 300 Payout Log</span>
+                </a>
+            </li> --}}
+            <li class="nav-item {{ $route == 'admin.mps24_distribution' ? 'active' : '' }} ">
+                <a class="nav-link" href="{{ route('admin.mps24_distribution') }}">
+                    <i class="icon-grid menu-icon"></i>
+                    <span class="menu-title">Generate Mps24 Payout </span>
+                </a>
+            </li>
+            <li class="nav-item {{ $route == 'admin.mps24_distribution_log' ? 'active' : '' }} ">
+                <a class="nav-link" href="{{ route('admin.mps24_distribution_log') }}">
+                    <i class="icon-grid menu-icon"></i>
+                    <span class="menu-title">Generate Mps24 Payout Log</span>
+                </a>
+            </li>
+        </ul>
     </li>
-    <li class="nav-item {{ $route == 'admin.pps_distribution_log' ? 'active' : '' }} ">
-        <a class="nav-link" href="{{ route('admin.pps_distribution_log') }}">
-            <i class="icon-grid menu-icon"></i>
-            <span class="menu-title">Generate Payout Log</span>
-        </a>
-    </li>
+
     <li class="nav-item {{ $route == 'admin.payment_request_process' ? 'active' : '' }} ">
         <a class="nav-link" href="{{ route('admin.payment_request_process') }}">
             <i class="icon-grid menu-icon"></i>

@@ -129,6 +129,9 @@ Route::group(['middleware' =>['auth:admin'],'prefix'=>'admin','as'=>'admin.'], f
     Route::get('/generate/ppsx_distribution', [PpsxInvestmentController::class, 'ppsx_distribution'])->name('ppsx_distribution');
     Route::get('/generate/ppsx_distribution_log', [PpsxInvestmentController::class, 'ppsx_distribution_log'])->name('ppsx_distribution_log');
 
+    Route::get('/generate/mps24_distribution', [MpsInvestmentController::class, 'mps24_distribution'])->name('mps24_distribution');
+    Route::get('/generate/mps24_distribution_log', [MpsInvestmentController::class, 'mps24_distribution_log'])->name('mps24_distribution_log');
+
 
     Route::get('/report/downline', [ReportController::class, 'downline_report'])->name('downline_report');
     Route::get('/report/referral_benefit', [ReportController::class, 'referral_benefit_report'])->name('referral_benefit_report');

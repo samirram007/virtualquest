@@ -10,13 +10,8 @@ use App\Models\Mps36Staking;
 use App\Models\Mps48Staking;
 use App\Models\Mps60Staking;
 use Illuminate\Http\Request;
-use App\Models\MpsInvestment;
 use App\Models\PaymentRequest;
-use App\Models\PpsxInvestment;
 use App\Models\SelfInvestment;
-use App\Models\Mps36Investment;
-use App\Models\Mps48Investment;
-use App\Models\Mps60Investment;
 use App\Models\ReferralBenefit;
 use Illuminate\Support\Facades\DB;
 use App\Models\PpsxReferralBenefit;
@@ -56,11 +51,11 @@ class PaymentController extends Controller
         $data['pps_level'] = PpsLevelDistribution::where('parent_id', $user->id)->sum('commission');
 
         $data['ppsx_referral_benefit'] = PpsxReferralBenefit::where('parent_id', $user->id)->sum('commission');
-        //$data['referral_benefit']+=$data['ppsx_referral_benefit'];
+        $data['referral_benefit']+=$data['ppsx_referral_benefit'];
         $data['ppsx_staking'] = PpsxStaking::where('user_id', $user->id)->sum('commission');
-       // $data['pps_staking']+=$data['ppsx_staking'];
+        $data['pps_staking']+=$data['ppsx_staking'];
         $data['ppsx_level'] = PpsxLevelDistribution::where('parent_id', $user->id)->sum('commission');
-       // $data['pps_level']+=$data['ppsx_level'];
+        $data['pps_level']+=$data['ppsx_level'];
 
         $data['mps_referral_benefit']=0;
         $data['mps_staking']=0;
@@ -94,11 +89,7 @@ class PaymentController extends Controller
         $data['mps60_level'] = Mps60LevelDistribution::where('parent_id', $user->id)->sum('commission');
         $data['mps_level']+=$data['mps60_level'];
         $data['mps_level']=0;
-
-        $data['total'] = $data['referral_benefit'] + $data['pps_staking'] + $data['pps_level']
-        + $data['ppsx_referral_benefit'] + $data['ppsx_staking'] + $data['ppsx_level']
-        + $data['mps_referral_benefit']+$data['mps_staking'] + $data['mps_level'];
-
+        $data['total'] = $data['referral_benefit'] + $data['pps_staking'] + $data['pps_level'] + $data['mps_referral_benefit']+$data['mps_staking'] + $data['mps_level'];
         $data['total_paid'] = PaymentRequest::where('user_id', $user->id)->where('status', 'paid')->sum('amount');
         $data['total_pending'] = PaymentRequest::where('user_id', $user->id)->where('status', 'pending')->sum('amount');
         $data['balance'] = $data['total'] - $data['total_paid'] - $data['total_pending'];
@@ -152,42 +143,20 @@ class PaymentController extends Controller
 
         $user_immediate_count = User::Where('parent_id', $user->id)->count();
         $data['self_investment'] = SelfInvestment::where('user_id', $user->id)->where('status', true)->sum('amount');
-        $data['ppsx_investment'] = PpsxInvestment::where('user_id', $user->id)->where('status', true)->sum('amount');
-        $data['mps24_investment'] = MpsInvestment::where('user_id', $user->id)->where('status', true)->sum('amount');
-        $data['mps36_investment'] = Mps36Investment::where('user_id', $user->id)->where('status', true)->sum('amount');
-        $data['mps48_investment'] = Mps48Investment::where('user_id', $user->id)->where('status', true)->sum('amount');
-        $data['mps60_investment'] = Mps60Investment::where('user_id', $user->id)->where('status', true)->sum('amount');
-        $total_investment=$data['self_investment']+$data['ppsx_investment']+$data['mps24_investment']+$data['mps36_investment']+$data['mps48_investment']+$data['mps60_investment'];
-        if ($total_investment == 0) {
+        if ($data['self_investment'] == 0) {
             return response()->json(['status' => 'error', 'message' => 'You are not an active user']);
             // return back()->with('error','You are not an active user');
         }
         $data['referral_benefit'] = ReferralBenefit::where('parent_id', $user->id)->sum('commission');
         $data['pps_staking'] = PpsStaking::where('user_id', $user->id)->sum('commission');
-        $data['ppsx_referral_benefit'] = PpsxReferralBenefit::where('parent_id', $user->id)->sum('commission');
-        $data['ppsx_staking'] = PpsxStaking::where('user_id', $user->id)->sum('commission');
-        $data['mps24_referral_benefit'] = Mps24ReferralBenefit::where('parent_id', $user->id)->sum('commission');
-        $data['mps24_staking'] = Mps24Staking::where('user_id', $user->id)->sum('commission');
-        $data['mps36_referral_benefit'] = Mps36ReferralBenefit::where('parent_id', $user->id)->sum('commission');
-        $data['mps36_staking'] = Mps36Staking::where('user_id', $user->id)->sum('commission');
-        $data['mps48_referral_benefit'] = Mps48ReferralBenefit::where('parent_id', $user->id)->sum('commission');
-        $data['mps48_staking'] = Mps48Staking::where('user_id', $user->id)->sum('commission');
-        $data['mps60_referral_benefit'] = Mps60ReferralBenefit::where('parent_id', $user->id)->sum('commission');
-        $data['mps60_staking'] = Mps60Staking::where('user_id', $user->id)->sum('commission');
 
         $pps_level_total = 0;
-        $ppsx_level_total = 0;
         //dd($user_immediate_count);
         if ($user_immediate_count >= 2) {
             $pps_level13 = PpsLevelDistribution::where('parent_id', $user->id)
                 ->where('level', '<=', 3)
                 ->sum('commission');
             $pps_level_total += $pps_level13 != null ? $pps_level13 : 0;
-            //ppxx
-            $ppsx_level13 = PpsxLevelDistribution::where('parent_id', $user->id)
-                ->where('level', '<=', 3)
-                ->sum('commission');
-            $ppsx_level_total += $ppsx_level13 != null ? $ppsx_level13 : 0;
           //  dd($pps_level_total);
         }
         if ($user_immediate_count >= 3) {
@@ -196,12 +165,6 @@ class PaymentController extends Controller
                 ->where('level', '<=', 6)
                 ->sum('commission');
             $pps_level_total += $pps_level46 != null ? $pps_level46 : 0;
-            //ppsx
-            $ppsx_level46 = PpsxLevelDistribution::where('parent_id', $user->id)
-                ->where('level', '>=', 4)
-                ->where('level', '<=', 6)
-                ->sum('commission');
-            $ppsx_level_total += $ppsx_level46 != null ? $ppsx_level46 : 0;
         }
         if ($user_immediate_count >= 5) {
             $pps_level710 = PpsLevelDistribution::where('parent_id', $user->id)
@@ -209,24 +172,12 @@ class PaymentController extends Controller
                 ->where('level', '<=', 10)
                 ->sum('commission');
             $pps_level_total += $pps_level710 != null ? $pps_level710 : 0;
-            //ppsx
-            $ppsx_level710 = PpsxLevelDistribution::where('parent_id', $user->id)
-                ->where('level', '>=', 7)
-                ->where('level', '<=', 20)
-                ->sum('commission');
-            $ppsx_level_total += $ppsx_level710 != null ? $ppsx_level710 : 0;
         }
 
         $data['pps_level'] = $pps_level_total;
-        $data['ppsx_level'] = $ppsx_level_total;
         // $data['pps_level']=PpsLevelDistribution::where('parent_id',$user->id)->sum('commission');
 
         $data['total'] = $data['referral_benefit'] + $data['pps_staking'] + $data['pps_level'];
-        $data['total'] += $data['ppsx_referral_benefit'] + $data['ppsx_staking'] + $data['ppsx_level'];
-        $data['total'] += $data['mps24_referral_benefit'] + $data['mps24_staking'];
-        $data['total'] += $data['mps36_referral_benefit'] + $data['mps36_staking'];
-        $data['total'] += $data['mps48_referral_benefit'] + $data['mps48_staking'];
-        $data['total'] += $data['mps60_referral_benefit'] + $data['mps60_staking'];
 
         $data['total_paid'] = PaymentRequest::where('user_id', $user->id)->where('status', 'paid')->sum('amount');
         $data['total_payable'] = $data['total'] - $data['total_paid'];
@@ -256,8 +207,7 @@ class PaymentController extends Controller
             // return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        // if (($data['self_investment'] * 3) < ($data['total_paid'] + $request->amount)) {
-        if (($total_investment * 3) < ($data['total_paid'] + $request->amount)) {
+        if (($data['self_investment'] * 3) < ($data['total_paid'] + $request->amount)) {
             return response()->json(['status' => 'error', 'message' => 'You can not request more than 3 times of your self investment amount.']);
             // return back()->with('error','You can not request more than 3 times of your investment amount');
         }

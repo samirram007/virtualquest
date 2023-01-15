@@ -566,11 +566,29 @@
             text-align: center;
             min-height: 50px;
         }
+        video {
+  object-fit: cover;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
     </style>
+
 </head>
 
 <body class="bg-dark">
-    <div id="particles-js" style="position: absolute;"></div>
+
+    {{-- <div id="particles-js" style="position: absolute;"></div> --}}
+    {{-- backgrounbd video --}}
+    <video autoplay muted loop   id="myVideo" style="position: absolute; ">
+        {{-- <source src="{{ asset('video/vid.mp4') }}" type="video/mp4"> --}}
+
+        {{-- <source   src="https://assets.mixkit.co/videos/preview/mixkit-news-intro-background-of-rotating-planet-14111-large.mp4" type="video/mp4"> --}}
+        {{-- <source   src="https://assets.mixkit.co/videos/preview/mixkit-layer-of-luminous-particles-in-space-18140-large.mp4" type="video/mp4"> --}}
+        <source   src="https://assets.mixkit.co/videos/preview/mixkit-pennies-falling-on-a-reflective-surface-with-a-dark-background-18306-large.mp4" type="video/mp4">
+    </video>
     <nav class="navbar navbar-expand-md navbar-light  shadow-sm  " data-aos="fade-in" data-aos-duration="1000"
         data-aos-easing="ease-in-out">
 
@@ -607,210 +625,14 @@
         </div>
     </nav>
 
-
     <div class="container-fluid p-0">
 
         <div class="row max-height mx-0 p-0 ">
-            <div class="col-md-12 p-0" style="margin:0">
-                <div class="owl-carousel   owl-theme owl-loaded owl-drag">
-                    <div class="slider-one max-height   text-light p-3 d-flex flex-column justify-content-center">
-                        <div class="left-top"> </div>
-                        <div class="right-bottom  "> </div>
+           @include('body')
 
-                        <svg class="circle-left" width="100" height="100">
-                            <circle cx="30" cy="30" r="10" stroke="ffffffbb" stroke-width="2"
-                                fill="#ffffffaa" />
-                        </svg>
-
-
-
-                        <div data-aos="fade-in " class="px-4">
-                            <h1 class="border-red tag-head"> Begin </h1>
-                            <h3 class="tag">Let Us Begin The Quest To Unearth Our Virtual Identity</h3>
-                            <div class="btn-panel">
-                                <div class="btn-vq" onclick="openRegisterForm();"> Register Now</div>
-                            </div>
-
-                        </div>
-
-                        {{-- <div class="overlay"></div> --}}
-
-
-                    </div>
-                    <div class="slider-two max-height   text-light p-3 d-flex flex-column justify-content-center">
-
-
-                        <div class="right-top"> </div>
-                        <div class="left-bottom"> </div>
-
-                        <svg class="circle-left" width="100" height="100">
-                            <circle cx="30" cy="30" r="10" stroke="ffffffbb" stroke-width="2"
-                                fill="#ffffffaa" />
-                        </svg>
-
-                        <div data-aos="fade-in " class="px-4">
-
-                            <h1 class="border-blue tag-head"> Tourism </h1>
-                            <h3 class="tag"> Begin Your Journey Around The Globe
-                                <div>Be a Wanderlust </div>
-                                <a class="btn btn-secondary" href="https://vqholidays.com" target="blank">Connect</a>
-                            </h3>
-                            <div class="btn-panel">
-                                <div class="btn-vq"  onclick="openRegisterForm();"> Register Now</div>
-                            </div>
-                        </div>
-
-                        {{-- <div class="overlay"></div> --}}
-
-
-                    </div>
-
-                    <div class="slider-three max-height   text-light p-3 d-flex flex-column justify-content-center">
-                        <div class="left-top"> </div>
-                        <div class="right-bottom"> </div>
-                        <svg class="circle-left" width="100" height="100">
-                            <circle cx="30" cy="30" r="10" stroke="ffffffbb" stroke-width="2"
-                                fill="#ffffffaa" />
-                        </svg>
-
-                        <div data-aos="fade-in " class="px-4">
-
-                            <h1 class="border-yellow tag-head"> Trading </h1>
-                            <h3 class="tag"> Teade Sense ...
-                                <div> Sensible Trading Secure Earning</div>
-                            </h3>
-                            <div class="btn-panel">
-                                <div class="btn-vq"  onclick="openRegisterForm();"> Register Now</div>
-                            </div>
-                        </div>
-                        {{-- <div class="overlay"></div> --}}
-                    </div>
-                    <div class="slider-four max-height  text-light p-3 d-flex flex-column justify-content-center">
-                        <div class="right-top"> </div>
-                        <div class="left-bottom"> </div>
-                        <svg class="circle-left" width="100" height="100">
-                            <circle cx="30" cy="30" r="10" stroke="ffffffbb" stroke-width="2"
-                                fill="#ffffffaa" />
-                        </svg>
-
-                        <div data-aos="fade-in " class="px-4">
-
-                            <h1 class="border-green tag-head"> Gaming </h1>
-                            <h3 class="tag"> Hone your skills...
-                                <div> Connect Compete...</div>
-                                <div> Be a Champion...</div>
-                            </h3>
-
-                            <div class="btn-panel">
-                                <div class="btn-vq"  onclick="openRegisterForm();"> Register Now</div>
-                            </div>
-                        </div>
-                        {{-- <div class="overlay"></div> --}}
-                    </div>
-                    <div class="slider-five max-height   text-light p-3 d-flex flex-column justify-content-center">
-                        <div class="right-top"> </div>
-                        <div class="left-bottom"> </div>
-                        <svg class="circle-left" width="100" height="100">
-                            <circle cx="30" cy="30" r="10" stroke="ffffffbb" stroke-width="2"
-                                fill="#ffffffaa" />
-                        </svg>
-
-                        <div data-aos="fade-in " class="px-4">
-
-                            <h1 class="border-red tag-head"> E-Commerce </h1>
-                            <h3 class="tag"> The World At Your Fingertips
-                                <div>It Is Realy Global</div>
-                            </h3>
-                            <div class="btn-panel">
-                                <div class="btn-vq"  onclick="openRegisterForm();"> Register Now</div>
-                            </div>
-
-                        </div>
-                        {{-- <div class="overlay"></div> --}}
-                    </div>
-                    <div class="slider-six max-height  text-light p-3 d-flex flex-column justify-content-center">
-                        <div class="left-top"> </div>
-                        <div class="right-bottom"> </div>
-                        <svg class="circle-left" width="100" height="100">
-                            <circle cx="30" cy="30" r="10" stroke="ffffffbb" stroke-width="2"
-                                fill="#ffffffaa" />
-                        </svg>
-
-                        <div data-aos="fade-in " class="px-4">
-
-                            <h1 class="border-green tag-head"> NFT </h1>
-                            <h3 class="tag"> Your Next Asset Is In The Digital World</h3>
-                            <div class="btn-panel">
-                                <div class="btn-vq"  onclick="openRegisterForm();"> Register Now</div>
-                            </div>
-
-                        </div>
-                        {{-- <div class="overlay"></div> --}}
-                    </div>
-                    <div class="slider-seven max-height   text-light p-3 d-flex flex-column justify-content-center">
-                        <div class="right-top"> </div>
-                        <div class="left-bottom"> </div>
-                        <svg class="circle-left" width="100" height="100">
-                            <circle cx="30" cy="30" r="10" stroke="ffffffbb" stroke-width="2"
-                                fill="#ffffffaa" />
-                        </svg>
-
-                        <div data-aos="fade-in" class="px-4">
-
-                            <h1 class="border-violet tag-head"> SAAS </h1>
-                            <h3 class="tag">
-                                Coded To Perfection
-                                <div>Will Exceed Your Expectations</div>
-                            </h3>
-                            <div class="btn-panel">
-                                <div class="btn-vq"  onclick="openRegisterForm();"> Register Now</div>
-                            </div>
-
-                        </div>
-                        {{-- <div class="overlay"></div> --}}
-                    </div>
-                    <div class="slider-eight max-height   text-light p-3 d-flex flex-column justify-content-center">
-                        <div class="left-top"> </div>
-                        <div class="right-bottom"> </div>
-                        <svg class="circle-left" width="100" height="100">
-                            <circle cx="30" cy="30" r="10" stroke="ffffffbb" stroke-width="2"
-                                fill="#ffffffaa" />
-                        </svg>
-
-                        <div data-aos="fade-in" class="px-4 mt-n4">
-
-                            <h1 class="border-orange tag-head"> Education </h1>
-                            <h3 class="tag"> Education replaces emplty mind with positive thoughts and attitude</h3>
-                            <div class="btn-panel">
-                                <div class="btn-vq"  onclick="openRegisterForm();"> Register Now</div>
-                            </div>
-                        </div>
-                        {{-- <div class="overlay"></div> --}}
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-md-4 p-0 shadow-lg p-3 bg-orange d-none " style="margin:0 -10px; z-index:1001"
-                data-aos="slide-down" data-aos-duration="2000">
-                <div class="p=0  text-light max-height d-flex flex-column justify-content-center">
-                    <div data-aos="fade-in">
-
-
-                        <div class=""> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                            mollit anim id est laborum. </div>
-                        <a href="{{ route('login') }}" class="btn btn-secondary"> Login</a>
-
-                    </div>
-                </div>
-
-            </div>
         </div>
     </div>
+
     @include('popup.notify')
     @include('popup.login')
     @include('popup.adminlogin')
@@ -851,14 +673,14 @@
     </footer>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.5.1/dist/simpleParallax.min.js"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/simple-parallax-js@5.5.1/dist/simpleParallax.min.js"></script> --}}
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-    <script src="{{ asset('images/slider/particles/particles.js') }}"></script>
-    <script src="{{ asset('images/slider/particles/demo/js/app.js') }}"></script>
+    {{-- <script src="{{ asset('images/slider/particles/particles.js') }}"></script> --}}
+    {{-- <script src="{{ asset('images/slider/particles/demo/js/app.js') }}"></script> --}}
 
     <!-- stats.js -->
-    <script src="{{ asset('images/slider/particles/demo/js/lib/stats.js') }}"></script>
+    {{-- <script src="{{ asset('images/slider/particles/demo/js/lib/stats.js') }}"></script> --}}
     <script>
         function openForm() {
             document.getElementById("popupForm").style.display = "block";
@@ -941,7 +763,7 @@
 
         function share_all() {
             var text = "Hello, world!";
-            var url = "https://virtualquest.cloud";
+            var url = "https://virtualexistence.cloud";
             if (navigator.share) {
                 navigator.share({
                         title: document.title,
@@ -960,7 +782,7 @@
 
             // Getting user input
             var message = $("input[name=message]").val();
-            var copyText = 'https://virtualquest.cloud';
+            var copyText = 'https://virtualexistence.cloud';
             // Opening URL
             window.open(
                 "whatsapp://send?text=" + copyText,

@@ -21,7 +21,7 @@ class ReportController extends Controller
     public function downline_report()
     {
         $this->level = 0;
-        $data['title'] = 'PPS Investment Report';
+        $data['title'] = 'VPS Investment Report';
         $collection = $this->get_downline_tree(Auth::user()->id);
         // $data['collection'] = $collection;
         //dd($this->user);
@@ -102,8 +102,8 @@ class ReportController extends Controller
     public function pps_staking_report()
     {
         $this->level = 0;
-        $data['title'] = 'PPS Wallet';
-        $data['sub_wallet'] = 'pps';
+        $data['title'] = 'VPS Wallet';
+        $data['sub_wallet'] = 'vps';
         $data['collection'] = PpsStaking::with('investment', 'user')->where('user_id', Auth::user()->id)->get();
         $data['total_benefit'] = PpsStaking::where('user_id', Auth::user()->id)->sum('commission');
         $data['transfered'] = MainWallet::where('user_id', Auth::user()->id)
@@ -120,7 +120,7 @@ class ReportController extends Controller
         $today=date('Y-m-d');
         $this->level = 0;
         $total_payble = 0;
-        $data['title'] = 'PPS Level Wallet';
+        $data['title'] = 'VPS Level Wallet';
         $collection = PpsLevelDistribution::with('investment', 'user')->where('parent_id', Auth::user()->id)->get();
         $user_immediate_count = User::Where('parent_id', $user->id)->count();
         $immediate_13=false;$immediate_46=false;$immediate_710 = false;

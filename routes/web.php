@@ -26,10 +26,10 @@ use App\Http\Controllers\Auth\RegisterController;
 */
 
 
-
 Route::group(['middleware' => ['guest','guest:admin']],function(){
     Route::get('/',function(){
-        return view('landing');
+        //return view('maintenance');
+         return view('landing');
     })->name('landing');
     // Route::get('/', function () {
     //     return redirect()->route('login');

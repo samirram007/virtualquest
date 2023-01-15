@@ -41,7 +41,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!-- endinject -->
-    <link rel="shortcut icon" href="{{ asset('images/vqlogo_sm.png') }}" />
+    <link rel="shortcut icon" href="{{ asset('images/velogo.png') }}" />
     <style>
         .navbar {
             box-shadow: none !important;

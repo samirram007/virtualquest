@@ -1,7 +1,7 @@
 <div style="text-align: center">
 
      <p>
-        <img src="{{asset('images/vqlogo.png')}}" style="width:200px;" alt="vqlogo">
+        <img src="{{asset('images/velogo.png')}}" style="width:200px;" alt="velogo">
     </p>
     <h4 style="color: rgb(75, 100, 27)">Congratulations</h4>
     <p style="color:rgb(12, 103, 131); font-weight:bold">

@@ -49,7 +49,7 @@
                                     </div>
                                     <div class="row align-items-center mb-2 d-flex">
                                         <div class="col-8">
-                                            PPS Wallet
+                                            VPS Wallet
                                             {{-- info icon --}}
                                             <a href="#" data-toggle="modal" data-target="#poolProfitModal">
                                                 <i class="fas fa-info-circle text-light"></i>
@@ -61,7 +61,7 @@
                                     </div>
                                     <div class="row align-items-center mb-2 d-flex">
                                         <div class="col-8">
-                                            PPS Level Wallet
+                                            VPS Level Wallet
                                             {{-- info icon --}}
                                             <a href="#" data-toggle="modal" data-target="#ppsLevelModal">
                                                 <i class="fas fa-info-circle text-light"></i>

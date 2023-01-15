@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'VirtualQuest'),
+    'name' => env('APP_NAME', 'VirtualExistence'),
 
     /*
     |--------------------------------------------------------------------------

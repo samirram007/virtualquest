@@ -64,8 +64,8 @@
                             </button>
                         </div>
                         <div class="col-6">
-                            {{-- <a class="btn btn-primary w-100 " href="javascript:" onclick="openRegisterForm();"> --}}
-                            <a class="btn btn-primary w-100 " href="javascript:" onclick="maintain();">
+                            <a class="btn btn-primary w-100 " href="javascript:" onclick="openRegisterForm();">
+                            {{-- <a class="btn btn-primary w-100 " href="javascript:" onclick="maintain();"> --}}
                                 {{__('Register')}}
                                 {{-- {{ __('Don\'t have a passcode, please register') }} --}}
                             </a>

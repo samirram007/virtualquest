@@ -6,20 +6,20 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h4 class="m-0 text-vq-light py-2">{{ __('PPS ') }}</h4>
+                        <h4 class="m-0 text-vq-light py-2">{{ __('VPS ') }}</h4>
 
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right border-0">
                             <li class="breadcrumb-item "><a href="{{ route('home') }}" class="text-vq-light">Home</a></li>
-                            <li class="breadcrumb-item active"> PPS </li>
+                            <li class="breadcrumb-item active"> VPS </li>
                         </ol>
                     </div><!-- /.col -->
                 </div>
                 <div class="container">
 
 
-                    <div class="row d-none ">
+                    <div class="row  ">
 
 
                         <div class="investment col-12">

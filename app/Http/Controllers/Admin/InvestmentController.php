@@ -238,18 +238,23 @@ class InvestmentController extends Controller
 
         });
 
-       // return Redirect()->back();
+        return Redirect()->back();
     }
 
     protected function pps_distribution_log()
     {
-        // DB::transaction(function () {
+      // DB::transaction(function ($limit) {
             $today = date('Y-m-d');
             //  $today=date('Y-m-d',strtotime($today.'-10 day'));
             //dd($today);
+            $limit=0;
+            $limit=$limit-50;
+            $skip=$limit-50;
+
             $investment = SelfInvestment::where('status', 1)
                 ->where('investment_date', '<', $today)
-                ->orderby('created_at')->get();
+                ->orderby('created_at')
+                ->get();
                // dd($investment);
             $cnt = 0;
             foreach ($investment as $key => $inv) {
@@ -316,9 +321,9 @@ class InvestmentController extends Controller
 
             }
 
-    //   });
+     // });
     //     DB::commit();
-       // return Redirect()->back();
+        return Redirect()->back();
     }
     protected function pps_distribution_acknowledge(Request $request)
     {

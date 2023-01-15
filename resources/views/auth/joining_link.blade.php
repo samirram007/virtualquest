@@ -1,7 +1,7 @@
 <div style="text-align: center">
     <h2>Welcome!</h2>
      <p>
-        <img src="{{asset('images/vqlogo_sm.png')}}" style="width:200px;" alt="vqlogo">
+        <img src="{{asset('images/velogo_sm.png')}}" style="width:200px;" alt="velogo">
     </p>
     <p>Dear {{$name}},</p>
     <p>

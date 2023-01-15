@@ -209,6 +209,7 @@ class PpsxInvestmentController extends Controller
 
                 $data->commission = $inv_commission;
                 $data->save();
+               // dd($data);
                 $parent_id = User::where('id', $inv->user_id)->first()->parent_id;
                 $cnt_distribution = 0;
                 while ($parent_id != null && $cnt_distribution < 20) {
@@ -226,7 +227,11 @@ class PpsxInvestmentController extends Controller
                     $pps_level->amount = $inv->amount;
                     $pps_level->level = $cnt_distribution + 1;
                     $pps_level->day_count = $days;
+
                     $pps_level->commission = ($inv_commission * ($level_commission->commission) / 100);
+
+
+
                     $pps_level->save();
 
                     $parent_id = User::where('id', $parent_id)->first()->parent_id;
@@ -235,9 +240,9 @@ class PpsxInvestmentController extends Controller
 
             }
 
-        });
+    });
 
-       // return Redirect()->back();
+      return Redirect()->back();
     }
 
     protected function ppsx_distribution_log()
@@ -268,8 +273,8 @@ class PpsxInvestmentController extends Controller
                         $data = $ex_data;
                     }
                     else{
-                         $data->investment_id = $inv->id;
-                    $data->log_date = date('Y-m-d', strtotime($inv->investment_date . ' + ' . $i . ' days'));
+                        $data->investment_id = $inv->id;
+                        $data->log_date = date('Y-m-d', strtotime($inv->investment_date . ' + ' . $i . ' days'));
 
                     $data->user_id = $inv->user_id;
                     $data->amount = $inv->amount;
@@ -315,7 +320,7 @@ class PpsxInvestmentController extends Controller
 
     //   });
     //     DB::commit();
-        //return Redirect()->back();
+       return Redirect()->back();
     }
     protected function ppsx_distribution_acknowledge(Request $request)
     {

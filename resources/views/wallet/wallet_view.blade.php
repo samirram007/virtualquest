@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="row align-items-center mb-2 d-flex">
                                         <div class="col-8">
-                                            Pool Profit Share
+                                            Trade Profit Share
                                         </div>
                                         <div class="col-4 text-right">
                                             <span>{{ __('$') . substr(number_format($pps_staking, 4, '.', ''), 0, -2) }}</span>
@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="row align-items-center mb-2 d-flex">
                                         <div class="col-8">
-                                            PPS Level
+                                            VPS Level
                                         </div>
                                         <div class="col-4 text-right">
                                             <span>{{ __('$') . substr(number_format($pps_level, 4, '.', ''), 0, -2) }}</span>

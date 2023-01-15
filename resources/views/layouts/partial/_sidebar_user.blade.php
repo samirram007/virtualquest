@@ -18,7 +18,7 @@
             <span class="menu-title">Profile </span>
         </a>
     </li>
-    <li class="nav-item {{ $route == 'passbook' ? 'active' : '' }} ">
+    <li class="d-none nav-item {{ $route == 'passbook' ? 'active' : '' }} ">
         <a class="nav-link" href="{{ route('passbook') }}">
             <i class="icon-grid menu-icon"></i>
             <span class="menu-title">Passbook </span>
@@ -32,10 +32,10 @@
             <li class="nav-item {{ $route == 'self_report' ? 'active' : '' }} ">
                 <a class="nav-link" href="{{ route('self_report') }}">
                     <i class="icon-grid menu-icon"></i>
-                    <span class="menu-title">PPS </span>
+                    <span class="menu-title">VPS </span>
                 </a>
             </li>
-            <li class="nav-item {{ $route == 'ppsx.index' ? 'active' : '' }} ">
+            {{-- <li class="nav-item {{ $route == 'ppsx.index' ? 'active' : '' }} ">
                 <a class="nav-link" href="{{ route('ppsx.index') }}">
                     <i class="icon-grid menu-icon"></i>
                     <span class="menu-title">PPS NEXT </span>
@@ -64,7 +64,7 @@
                     <i class="icon-grid menu-icon"></i>
                     <span class="menu-title">MPS60 </span>
                 </a>
-            </li>
+            </li> --}}
         </ul>
     </li>
 
@@ -112,13 +112,13 @@
             <li class="nav-item {{ $route == 'pps_staking_report' ? 'active' : '' }} ">
                 <a class="nav-link" href="{{ route('pps_staking_report') }}">
                     <i class="icon-grid menu-icon"></i>
-                    <span class="menu-title">PPS Wallet</span>
+                    <span class="menu-title">VPS Wallet</span>
                 </a>
             </li>
             <li class="nav-item {{ $route == 'pps_level_report' ? 'active' : '' }} ">
                 <a class="nav-link" href="{{ route('pps_level_report') }}">
                     <i class="icon-grid menu-icon"></i>
-                    <span class="menu-title">PPS Level Wallet</span>
+                    <span class="menu-title">VPS Level Wallet</span>
                 </a>
             </li>
         </ul>
@@ -136,18 +136,18 @@
             <span class="menu-title">Investment Update</span>
         </a>
     </li>
-    <li class="nav-item {{ $route == 'wallet' ? 'active' : '' }} ">
+    {{-- <li class=" nav-item {{ $route == 'wallet' ? 'active' : '' }} ">
         <a class="nav-link" href="{{ route('wallet') }}">
             <i class="icon-grid menu-icon"></i>
             <span class="menu-title">Main Wallet</span>
         </a>
     </li>
-    <li class="nav-item {{ $route == 'payment_request' ? 'active' : '' }} ">
+    <li class=" nav-item {{ $route == 'payment_request' ? 'active' : '' }} ">
         <a class="nav-link" href="{{ route('payment_request') }}">
             <i class="icon-grid menu-icon"></i>
             <span class="menu-title">Withdrawal</span>
         </a>
-    </li>
+    </li> --}}
     <li class="nav-item {{ $route == 'token_application.create' ? 'active' : '' }} ">
         <a class="nav-link" href="{{ route('token_application.create') }}">
             <i class="icon-grid menu-icon"></i>

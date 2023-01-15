@@ -85,7 +85,7 @@ protected function register_through_link(Request $request)
     $passcode= rand(100000, 999999);
     $user=User::create([
         'name' => $request->name,
-        'code' => 'VQ'.$code,
+        'code' => 'VE'.$code,
         'email' => $request->email,
         'parent_id' => $request->parent_id,
         'password' => Hash::make($passcode),
@@ -120,7 +120,7 @@ protected function register_through_link(Request $request)
         $passcode= rand(100000, 999999);
         $user=User::create([
             'name' => $data['name'],
-            'code' => 'VQ'.$code,
+            'code' => 'VE'.$code,
             'email' => $data['email'],
             'parent_id' => $data['parent_id'],
             'password' => Hash::make($passcode),
@@ -134,7 +134,7 @@ protected function register_through_link(Request $request)
     protected function send_email($name,$email, $code, $passcode){
         $data = array('name'=>$name,'email'=>$email, 'code'=>$code, 'passcode'=>$passcode);
         Mail::send('auth.email_passcode', $data, function($message) use ($data) {
-            $message->to($data['email'])->subject('Secure:: VQ Accesscode');
+            $message->to($data['email'])->subject('Secure:: VE Accesscode');
         });
     }
     protected function get_unique_code(){
@@ -197,7 +197,7 @@ protected function register_through_link(Request $request)
                 $passcode= rand(100000, 999999);
                 $user=User::create([
                     'name' => $data['name'],
-                    'code' => 'VQ'.$u_code,
+                    'code' => 'VE'.$u_code,
                     'email' => $mail_link->email,
                     'parent_id' => $parent_user->id,
                     'password' => Hash::make($passcode),

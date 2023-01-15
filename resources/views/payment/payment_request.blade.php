@@ -31,53 +31,143 @@
                             <div class="card l-bg-blue">
                                 <div class="card-statistic-3 p-4">
                                     <div class="card-icon card-icon-large"><i class="fas fa-dollar-sign"></i></div>
-                                    <div class="mb-4">
-                                        <h5 class="card-title mb-0 text-light"> Wallet</h5>
+                                    <div class="mb-2">
+                                        <h6 class="card-title mb-0 text-light"> PPS Wallet</h6>
                                     </div>
-                                    <div class="row align-items-center mb-2 d-flex">
-                                        <div class="col-8">
-                                            Referral Level Distribution
-                                            {{-- info icon --}}
-                                            <a href="javascript:" data-toggle="modal" data-target="#referralLevelModal">
-                                                <i class="fas fa-info-circle text-light"></i>
-                                            </a>
+                                    <div class="pl-4">
+                                        <div class="row align-items-center mb-2 d-flex">
+                                            <div class="col-8">
+                                                Referral Level Distribution
+                                                {{-- info icon --}}
+                                                <a href="javascript:" data-toggle="modal" data-target="#referralLevelModal">
+                                                    <i class="fas fa-info-circle text-light"></i>
+                                                </a>
 
+                                            </div>
+                                            <div class="col-4 text-right">
+                                                <span>{{ __('$') . substr(number_format($referral_benefit, 4, '.', ''), 0, -2) }}</span>
+                                            </div>
                                         </div>
-                                        <div class="col-4 text-right">
-                                            <span>{{ __('$') . substr(number_format($referral_benefit,4,".",""),0,-2) }}</span>
+                                        <div class="row align-items-center mb-2 d-flex">
+                                            <div class="col-8">
+                                                Pool Profit Share
+                                                {{-- info icon --}}
+                                                <a href="#" data-toggle="modal" data-target="#poolProfitModal">
+                                                    <i class="fas fa-info-circle text-light"></i>
+                                                </a>
+                                            </div>
+                                            <div class="col-4 text-right">
+                                                <span>{{ __('$') . substr(number_format($pps_staking, 4, '.', ''), 0, -2) }}</span>
+                                            </div>
                                         </div>
+                                        <div class="row align-items-center mb-2 d-flex">
+                                            <div class="col-8">
+                                                PPS Level
+                                                {{-- info icon --}}
+                                                <a href="#" data-toggle="modal" data-target="#ppsLevelModal">
+                                                    <i class="fas fa-info-circle text-light"></i>
+                                                </a>
+                                            </div>
+                                            <div class="col-4 text-right">
+                                                <span>{{ __('$') . substr(number_format($pps_level, 4, '.', ''), 0, -2) }}</span>
+                                            </div>
+                                        </div>
+
                                     </div>
-                                    <div class="row align-items-center mb-2 d-flex">
-                                        <div class="col-8">
-                                            Pool Profit Share
-                                            {{-- info icon --}}
-                                            <a href="#" data-toggle="modal" data-target="#poolProfitModal">
-                                                <i class="fas fa-info-circle text-light"></i>
-                                            </a>
-                                        </div>
-                                        <div class="col-4 text-right">
-                                            <span>{{ __('$') . substr(number_format($pps_staking,4,".",""),0,-2) }}</span>
-                                        </div>
+                                    <div class="mb-2">
+                                        <h6 class="card-title mb-0 text-light"> PPS NEXT Wallet</h6>
                                     </div>
-                                    <div class="row align-items-center mb-2 d-flex">
-                                        <div class="col-8">
-                                            PPS Level
-                                            {{-- info icon --}}
-                                            <a href="#" data-toggle="modal" data-target="#ppsLevelModal">
-                                                <i class="fas fa-info-circle text-light"></i>
-                                            </a>
+                                    <div class="pl-4">
+                                        <div class="row align-items-center mb-2 d-flex">
+                                            <div class="col-8">
+                                                Referral Level Distribution (PPS NEXT)
+                                                {{-- info icon --}}
+                                                <a href="javascript:" data-toggle="modal" data-target="#referralLevelModal">
+                                                    <i class="fas fa-info-circle text-light"></i>
+                                                </a>
+
+                                            </div>
+                                            <div class="col-4 text-right">
+                                                <span>{{ __('$') . substr(number_format($ppsx_referral_benefit, 4, '.', ''), 0, -2) }}</span>
+                                            </div>
                                         </div>
-                                        <div class="col-4 text-right">
-                                            <span>{{ __('$') . substr(number_format($pps_level,4,".",""),0,-2) }}</span>
+                                        <div class="row align-items-center mb-2 d-flex">
+                                            <div class="col-8">
+                                                Pool Profit Share (PPS NEXT)
+                                                {{-- info icon --}}
+                                                <a href="#" data-toggle="modal" data-target="#poolProfitModal">
+                                                    <i class="fas fa-info-circle text-light"></i>
+                                                </a>
+                                            </div>
+                                            <div class="col-4 text-right">
+                                                <span>{{ __('$') . substr(number_format($ppsx_staking, 4, '.', ''), 0, -2) }}</span>
+                                            </div>
                                         </div>
+                                        <div class="row align-items-center mb-2 d-flex">
+                                            <div class="col-8">
+                                                PPS Level (PPS NEXT)
+                                                {{-- info icon --}}
+                                                <a href="#" data-toggle="modal" data-target="#ppsLevelModal">
+                                                    <i class="fas fa-info-circle text-light"></i>
+                                                </a>
+                                            </div>
+                                            <div class="col-4 text-right">
+                                                <span>{{ __('$') . substr(number_format($ppsx_level, 4, '.', ''), 0, -2) }}</span>
+                                            </div>
+                                        </div>
+
                                     </div>
+                                    <div class="my-2">
+                                        <h6 class="card-title mb-0 text-light"> MPS Wallet</h6>
+                                    </div>
+                                    <div class="pl-4">
+                                        <div class="row align-items-center mb-2 d-flex">
+                                            <div class="col-8">
+                                                Referral Distribution(MPS)
+                                                {{-- info icon --}}
+                                                <a href="javascript:" data-toggle="modal" data-target="#referralLevelModal">
+                                                    <i class="fas fa-info-circle text-light"></i>
+                                                </a>
+
+                                            </div>
+                                            <div class="col-4 text-right">
+                                                <span>{{ __('$') . substr(number_format($mps_referral_benefit, 4, '.', ''), 0, -2) }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-2 d-flex">
+                                            <div class="col-8">
+                                                Monthly Profit Share
+                                                {{-- info icon --}}
+                                                <a href="#" data-toggle="modal" data-target="#poolProfitModal">
+                                                    <i class="fas fa-info-circle text-light"></i>
+                                                </a>
+                                            </div>
+                                            <div class="col-4 text-right">
+                                                <span>{{ __('$') . substr(number_format($mps_staking, 4, '.', ''), 0, -2) }}</span>
+                                            </div>
+                                        </div>
+                                        <div class="row align-items-center mb-2 d-flex">
+                                            <div class="col-8">
+                                                MPS Level
+                                                {{-- info icon --}}
+                                                <a href="#" data-toggle="modal" data-target="#ppsLevelModal">
+                                                    <i class="fas fa-info-circle text-light"></i>
+                                                </a>
+                                            </div>
+                                            <div class="col-4 text-right">
+                                                <span>{{ __('$') . substr(number_format($mps_level, 4, '.', ''), 0, -2) }}</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
                                     <div
                                         class="row align-items-center mb-2 d-flex border-top border-light font-weight-bold">
                                         <div class="col-8">
                                             Total
                                         </div>
                                         <div class="col-4 text-right">
-                                            <span>{{ __('$') . substr(number_format($total,4,".",""),0,-2) }}</span>
+                                            <span>{{ __('$') . substr(number_format($total, 4, '.', ''), 0, -2) }}</span>
                                         </div>
                                     </div>
                                     <div class="row align-items-center mb-2 d-flex   ">
@@ -89,7 +179,7 @@
                                             </a>
                                         </div>
                                         <div class="col-4 text-right">
-                                            <span> {{ __('- $') . substr(number_format($total_paid,4,".",""),0,-2) }}</span>
+                                            <span> {{ __('- $') . substr(number_format($total_paid, 4, '.', ''), 0, -2) }}</span>
                                         </div>
                                     </div>
                                     <div class="row align-items-center mb-2 d-flex  ">
@@ -97,7 +187,7 @@
                                             Balance in wallet
                                         </div>
                                         <div class="col-4 text-right">
-                                            <span> {{ __('$') . substr(number_format($balance,4,".",""),0,-2) }}</span>
+                                            <span> {{ __('$') . substr(number_format($balance, 4, '.', ''), 0, -2) }}</span>
                                         </div>
                                     </div>
                                     <div
@@ -177,7 +267,7 @@
                 });
                 return false;
             }
-            if (amount >1000) {
+            if (amount > 1000) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
@@ -202,46 +292,46 @@
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Confirm'
             }).then((result) => {
-                    if (result.isConfirmed) {
-                        $.ajax({
-                            url: "{{ route('payment_request.process') }}",
-                            type: "POST",
-                            data: {
-                                "_token": "{{ csrf_token() }}",
-                                "amount": amount,
-                                "address": address,
-                                "payment_method": $('#payment_method').val(),
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "{{ route('payment_request.process') }}",
+                        type: "POST",
+                        data: {
+                            "_token": "{{ csrf_token() }}",
+                            "amount": amount,
+                            "address": address,
+                            "payment_method": $('#payment_method').val(),
 
-                            },
-                            success: function(response) {
-                                if (response.status == 'success') {
-                                    //alert(response.message);
-                                    Swal.fire({
-                                        icon: 'success',
-                                        title: 'Success',
-                                        text: response.message,
-                                        confirmButtonColor: '#3085d6',
-                                        confirmButtonText: 'OK'
-                                    }).then((result) => {
-                                        if (result.isConfirmed) {
-                                            location.reload();
-                                        }
-                                    })
-
-
+                        },
+                        success: function(response) {
+                            if (response.status == 'success') {
+                                //alert(response.message);
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Success',
+                                    text: response.message,
+                                    confirmButtonColor: '#3085d6',
+                                    confirmButtonText: 'OK'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        location.reload();
+                                    }
+                                })
 
 
-                                } else {
-                                    $('#message').html(response.message);
-                                    //alert(response.message);
-                                }
+
+
+                            } else {
+                                $('#message').html(response.message);
+                                //alert(response.message);
                             }
-                        });
+                        }
+                    });
 
-                    }
+                }
 
-                });
+            });
 
-            }
+        }
     </script>
 @endsection

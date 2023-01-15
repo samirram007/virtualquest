@@ -1,9 +1,9 @@
 {
-    "name": "VirtualQuest",
-    "short_name": "VQT",
+    "name": "VirtualExistence",
+    "short_name": "VEX",
     "start_url": "/index.php",
     "background_color": "#6777ef",
-    "description": "VirtualQuest",
+    "description": "Virtual Existence",
     "display": "fullscreen",
     "theme_color": "#6777ef",
     "icons": [
