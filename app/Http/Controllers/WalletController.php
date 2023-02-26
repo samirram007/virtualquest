@@ -59,14 +59,14 @@ class WalletController extends Controller
             ->where('transfer_date',date('Y-m-d'))
             ->where('created_at','>=',date('Y-m-d H:i:s',strtotime('-30 seconds')))
             ->first();
-    if($today_data){
-        return redirect()->back()->with('error', 'Already Transfered Today');
-    }
+            if($today_data){
+                return redirect()->back()->with('error', 'Already Transfered Today');
+            }
 
             $data['collection'] = PpsStaking::with('investment', 'user')->where('user_id', Auth::user()->id)->get();
             $data['total_benefit'] = PpsStaking::where('user_id', Auth::user()->id)->sum('commission');
             $data['transfered'] = MainWallet::where('user_id', Auth::user()->id)
-                ->where('sub_wallet', 'pps')
+                ->where('sub_wallet', 'vps')
                 ->sum('amount');
             $data['balance'] = $data['total_benefit'] - $data['transfered'];
             $balance = $data['balance'];
