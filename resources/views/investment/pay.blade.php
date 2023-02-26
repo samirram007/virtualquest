@@ -37,7 +37,8 @@
     <script>
         function copy_to_clipboard() {
             /* Get the text field */
-            var copyText = '0x961f4481f39b531ea1d2d6a9348e4586ef504169';
+            // var copyText = '0x961f4481f39b531ea1d2d6a9348e4586ef504169';
+            var copyText = '0xb64Af91F0424a91d34B9F647182792Edd88463f8';
 
             /* Select the text field */
             //copyText.select();

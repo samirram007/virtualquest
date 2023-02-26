@@ -182,9 +182,8 @@ class InvestmentController extends Controller
             foreach ($investment as $key => $inv) {
 
                 $pos = 0;
-                if ($inv->amount < 2500) {$pos = 0.4;}
-                elseif ($inv->amount < 5000) {$pos = 0.6;}
-                else { $pos = 0.8;}
+                if ($inv->amount < 4000) {$pos = 0.5;}
+                else { $pos = 0.75;}
 
                 //date difference investment_date to today
                 $date1 = date_create($inv->investment_date);
@@ -259,10 +258,9 @@ class InvestmentController extends Controller
             $cnt = 0;
             foreach ($investment as $key => $inv) {
                 $pos = 0;
-                if ($inv->amount < 2500)
-                {$pos = 0.4;}
-                elseif ($inv->amount < 5000) {$pos = 0.6;}
-                else { $pos = 0.8;}
+                if ($inv->amount < 4000)
+                {$pos = 0.5;}
+                else { $pos = 0.75;}
                 //date difference investment_date to today
                 $date1 = date_create($inv->investment_date);
                 $date2 = date_create($today);

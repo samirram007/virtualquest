@@ -21,34 +21,34 @@
     <li class="nav-item {{ $route == 'admin.investment_index' ? 'active' : '' }} ">
         <a class="nav-link" href="{{ route('admin.investment_index') }}">
             <i class="icon-grid menu-icon"></i>
-            <span class="menu-title">PPS </span>
+            <span class="menu-title">VPS </span>
         </a>
     </li>
-    <li class="nav-item {{ $route == 'admin.ppsx_index' ? 'active' : '' }} ">
+    <li class="d-none nav-item {{ $route == 'admin.ppsx_index' ? 'active' : '' }} ">
         <a class="nav-link" href="{{ route('admin.ppsx_index') }}">
             <i class="icon-grid menu-icon"></i>
             <span class="menu-title">PPS NEXT</span>
         </a>
     </li>
-    <li class="nav-item {{ $route == 'admin.mps_index' ? 'active' : '' }} ">
+    <li class="d-none nav-item {{ $route == 'admin.mps_index' ? 'active' : '' }} ">
         <a class="nav-link" href="{{ route('admin.mps_index') }}">
             <i class="icon-grid menu-icon"></i>
             <span class="menu-title">MPS24 </span>
         </a>
     </li>
-    <li class="nav-item {{ $route == 'admin.mps36_index' ? 'active' : '' }} ">
+    <li class="d-none nav-item {{ $route == 'admin.mps36_index' ? 'active' : '' }} ">
         <a class="nav-link" href="{{ route('admin.mps36_index') }}">
             <i class="icon-grid menu-icon"></i>
             <span class="menu-title">MPS36 </span>
         </a>
     </li>
-    <li class="nav-item {{ $route == 'admin.mps48_index' ? 'active' : '' }} ">
+    <li class="d-none nav-item {{ $route == 'admin.mps48_index' ? 'active' : '' }} ">
         <a class="nav-link" href="{{ route('admin.mps48_index') }}">
             <i class="icon-grid menu-icon"></i>
             <span class="menu-title">MPS48 </span>
         </a>
     </li>
-    <li class="nav-item {{ $route == 'admin.mps60_index' ? 'active' : '' }} ">
+    <li class="d-none nav-item {{ $route == 'admin.mps60_index' ? 'active' : '' }} ">
         <a class="nav-link" href="{{ route('admin.mps60_index') }}">
             <i class="icon-grid menu-icon"></i>
             <span class="menu-title">MPS60 </span>
@@ -71,13 +71,13 @@
                     <span class="menu-title">Generate 100 Payout Log</span>
                 </a>
             </li>
-            <li class="nav-item {{ $route == 'admin.ppsx_distribution' ? 'active' : '' }} ">
+            <li class=" d-none nav-item {{ $route == 'admin.ppsx_distribution' ? 'active' : '' }} ">
                 <a class="nav-link" href="{{ route('admin.ppsx_distribution') }}">
                     <i class="icon-grid menu-icon"></i>
                     <span class="menu-title">Generate Payout PPSX </span>
                 </a>
             </li>
-            <li class="nav-item {{ $route == 'admin.ppsx_distribution_log' ? 'active' : '' }} ">
+            <li class="d-none nav-item {{ $route == 'admin.ppsx_distribution_log' ? 'active' : '' }} ">
                 <a class="nav-link" href="{{ route('admin.ppsx_distribution_log') }}">
                     <i class="icon-grid menu-icon"></i>
                     <span class="menu-title">Generate Payout PPSX Log</span>
@@ -95,13 +95,13 @@
                     <span class="menu-title">Generate 300 Payout Log</span>
                 </a>
             </li> --}}
-            <li class="nav-item {{ $route == 'admin.mps24_distribution' ? 'active' : '' }} ">
+            <li class="d-none nav-item {{ $route == 'admin.mps24_distribution' ? 'active' : '' }} ">
                 <a class="nav-link" href="{{ route('admin.mps24_distribution') }}">
                     <i class="icon-grid menu-icon"></i>
                     <span class="menu-title">Generate Mps24 Payout </span>
                 </a>
             </li>
-            <li class="nav-item {{ $route == 'admin.mps24_distribution_log' ? 'active' : '' }} ">
+            <li class="d-none nav-item {{ $route == 'admin.mps24_distribution_log' ? 'active' : '' }} ">
                 <a class="nav-link" href="{{ route('admin.mps24_distribution_log') }}">
                     <i class="icon-grid menu-icon"></i>
                     <span class="menu-title">Generate Mps24 Payout Log</span>

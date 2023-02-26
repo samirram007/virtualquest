@@ -11,7 +11,7 @@ if (str_contains($prefix, 'admin')) {
 
 @endphp
 <nav class="navbar navbar-expand-lg navbar-dark bg-transparent justify-content-between">
-<div class="title text-light">PPS</div>
+<div class="title text-light">VPS</div>
     <div class="btn-group">
         <button type="button" class="btn btn-outline-info ">
             <a class="text-light" href="javascript:;" onclick="swalMsg('This proposition has been discontinued');">New <span class="sr-only">(current)</span></a>

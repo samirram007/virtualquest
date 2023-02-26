@@ -97,6 +97,7 @@
                                             Balance in Main Wallet
                                         </div>
                                         <div class="col-4 text-right">
+                                            <input type="text" class="sr-only" id="balance" name="balance" value="{{$balance}}">
                                             <span> {{ __('$') . substr(number_format($balance,4,".",""),0,-2) }}</span>
                                         </div>
                                     </div>
@@ -140,6 +141,9 @@
                                         <div class="col-md-12 text-left">
                                             <a href="javascript:" class="btn btn-primary {{ $is_disabled }}"
                                                 onclick="payment_request();">Request</a>
+                                                @if($balance < 10)
+                                                    <div class="text-danger">Minimum balance to make a request is $10</div>
+                                                @endif
                                         </div>
                                     </div>
                                     <div id="message" class="alert text-danger"></div>
@@ -167,6 +171,15 @@
         }
 
         function payment_request() {
+            var balance = $('#balance').val();
+            if(balance < 10){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Insufficient Balance',
+                });
+                return false;
+            }
             var amount = $('#amount').val();
 
             if (amount == '') {
@@ -177,11 +190,19 @@
                 });
                 return false;
             }
-            if (amount >1000) {
+            if (amount >300) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: 'Amount Must Not Exceed 1000$',
+                    text: 'Amount Must Not Exceed 300$',
+                });
+                return false;
+            }
+            if (amount <10) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Amount Must Be At Least 10$',
                 });
                 return false;
             }
