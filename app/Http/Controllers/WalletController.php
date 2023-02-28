@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\MainWallet;
-use App\Models\PpsStaking;
-use Illuminate\Http\Request;
 use App\Models\PaymentRequest;
-use App\Models\ReferralBenefit;
-use Illuminate\Support\Facades\DB;
 use App\Models\PpsLevelDistribution;
+use App\Models\PpsStaking;
+use App\Models\ReferralBenefit;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class WalletController extends Controller
 {
@@ -38,9 +38,9 @@ class WalletController extends Controller
         // $ex_payment_request =PaymentRequest::where('user_id',$user->id)
         // ->where(DB::raw("(DATE_FORMAT(payment_request_date,'%Y-%m-%d'))"),date('Y-m-d'))->toSql();
         // dd($ex_payment_request);
-        $data['rld_amount'] = MainWallet::where('user_id', $user->id)->Where('sub_wallet','rld')->sum('amount');
-        $data['pps_amount'] = MainWallet::where('user_id', $user->id)->Where('sub_wallet','pps')->sum('amount');
-        $data['ppsl_amount'] = MainWallet::where('user_id', $user->id)->Where('sub_wallet','ppsl')->sum('amount');
+        $data['rld_amount'] = MainWallet::where('user_id', $user->id)->Where('sub_wallet', 'rld')->sum('amount');
+        $data['pps_amount'] = MainWallet::where('user_id', $user->id)->Where('sub_wallet', 'pps')->sum('amount');
+        $data['ppsl_amount'] = MainWallet::where('user_id', $user->id)->Where('sub_wallet', 'ppsl')->sum('amount');
         $data['total'] = $data['rld_amount'] + $data['pps_amount'] + $data['ppsl_amount'];
         $data['total_paid'] = PaymentRequest::where('user_id', $user->id)->where('status', 'paid')->sum('amount');
         $data['total_pending'] = PaymentRequest::where('user_id', $user->id)->where('status', 'pending')->sum('amount');
@@ -50,42 +50,50 @@ class WalletController extends Controller
     }
     protected function pps_transfer_to_wallet(Request $request)
     {
-        DB::transaction(function () use ($request) {
+        // DB::transaction(function () use ($request) {
+
             $user = auth()->user();
             $data['title'] = 'PPS Wallet';
             $data['sub_wallet'] = 'pps';
-            $today_data=MainWallet::where('user_id', Auth::user()->id)
-            ->where('sub_wallet', 'pps')
-            ->where('transfer_date',date('Y-m-d'))
-            ->where('created_at','>=',date('Y-m-d H:i:s',strtotime('-30 seconds')))
-            ->first();
-            if($today_data){
+            $today_data = MainWallet::where('user_id', Auth::user()->id)
+                ->where('sub_wallet', 'pps')
+                ->where('transfer_date', date('Y-m-d'))
+                ->where('created_at', '>=', date('Y-m-d H:i:s', strtotime('-30 seconds')))
+                ->first();
+
+            if ($today_data) {
                 return redirect()->back()->with('error', 'Already Transfered Today');
             }
 
+
             $data['collection'] = PpsStaking::with('investment', 'user')->where('user_id', Auth::user()->id)->get();
+
             $data['total_benefit'] = PpsStaking::where('user_id', Auth::user()->id)->sum('commission');
+
             $data['transfered'] = MainWallet::where('user_id', Auth::user()->id)
-                ->where('sub_wallet', 'vps')
+                ->where('sub_wallet', 'pps')
                 ->sum('amount');
+
             $data['balance'] = $data['total_benefit'] - $data['transfered'];
             $balance = $data['balance'];
+
 
             $request->validate([
                 'balance' => 'required|numeric|min:0.0001|max:' . $balance,
             ]);
 
             $main_wallet = new MainWallet();
+
             $main_wallet->user_id = $user->id;
             $main_wallet->transfer_date = date('Y-m-d');
             $main_wallet->amount = $balance;
             $main_wallet->sub_wallet = $request->sub_wallet;
             $main_wallet->created_by = $user->id;
-            $main_wallet->save();
-        });
 
+             $main_wallet->save();
 
-
+        // });
+       // dd($main_wallet);
         return redirect()->back()->with('success', 'Transfered Successfully');
     }
     protected function rld_transfer_to_wallet(Request $request)
@@ -95,14 +103,14 @@ class WalletController extends Controller
             $data['title'] = 'RLD Wallet';
             $data['sub_wallet'] = 'rld';
             // if transfer to main wallet 30 seconds ago
-            $today_data=MainWallet::where('user_id', Auth::user()->id)
-            ->where('sub_wallet', 'rld')
-            ->where('transfer_date',date('Y-m-d'))
-            ->where('created_at','>=',date('Y-m-d H:i:s',strtotime('-30 seconds')))
-            ->first();
-    if($today_data){
-        return redirect()->back()->with('error', 'Already Transfered Today');
-    }
+            $today_data = MainWallet::where('user_id', Auth::user()->id)
+                ->where('sub_wallet', 'rld')
+                ->where('transfer_date', date('Y-m-d'))
+                ->where('created_at', '>=', date('Y-m-d H:i:s', strtotime('-30 seconds')))
+                ->first();
+            if ($today_data) {
+                return redirect()->back()->with('error', 'Already Transfered Today');
+            }
 
             $data['collection'] = ReferralBenefit::with('investment', 'parent')->where('parent_id', Auth::user()->id)->get();
             $data['total_benefit'] = ReferralBenefit::where('parent_id', Auth::user()->id)->sum('commission');
@@ -125,27 +133,24 @@ class WalletController extends Controller
             $main_wallet->save();
         });
 
-
-
         return redirect()->back()->with('success', 'Transfered Successfully');
     }
     protected function pps_level_transfer_to_wallet(Request $request)
     {
         //dd($request->all());
         $user = auth()->user();
-        $today_data=MainWallet::where('user_id', Auth::user()->id)
-                ->where('distribution_id', base64_decode($request->distribution_id))
-                ->where('sub_wallet', 'ppsl')
-                ->where('transfer_date',date('Y-m-d'))
-                ->first();
-        if($today_data){
+        $today_data = MainWallet::where('user_id', Auth::user()->id)
+            ->where('distribution_id', base64_decode($request->distribution_id))
+            ->where('sub_wallet', 'ppsl')
+            ->where('transfer_date', date('Y-m-d'))
+            ->first();
+        if ($today_data) {
             return redirect()->back()->with('error', 'Already Transfered Today');
         }
         DB::transaction(function () use ($request) {
             $user = auth()->user();
             $data['title'] = 'PPS LEVEL Wallet';
             $data['sub_wallet'] = 'ppsl';
-
 
             $main_wallet = new MainWallet();
             $main_wallet->user_id = $user->id;
@@ -158,9 +163,9 @@ class WalletController extends Controller
             $main_wallet->save();
         });
 
-  //dd($main_wallet);
+        //dd($main_wallet);
 
-        return response()->json(['status'=>200,'success' => 'Transfered Successfully']);
+        return response()->json(['status' => 200, 'success' => 'Transfered Successfully']);
     }
     /**
      * Display a listing of the resource.

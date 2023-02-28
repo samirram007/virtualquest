@@ -103,7 +103,7 @@ class ReportController extends Controller
     {
         $this->level = 0;
         $data['title'] = 'VPS Wallet';
-        $data['sub_wallet'] = 'vps';
+        $data['sub_wallet'] = 'pps';
         $data['collection'] = PpsStaking::with('investment', 'user')->where('user_id', Auth::user()->id)->get();
         $data['total_benefit'] = PpsStaking::where('user_id', Auth::user()->id)->sum('commission');
         $data['transfered'] = MainWallet::where('user_id', Auth::user()->id)
